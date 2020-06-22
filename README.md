@@ -11,13 +11,19 @@
     - Modelo.
     - Placa.
     - Cor.
+  - Cidade origem.
   - Ativo:
     - Motorista habilitado.
-    - Motorista não habilitado.
-  - Foto com CNH ao lado do rosto.
-  - Comprovante de endereço.
-  - Certidão de antecedentes criminais.
-  - Foto de CNH.
+    - Motorista não habilitado. (default)
+  - Forma de pagamento:
+    - Dinheiro.
+    - Cartão.
+    - Ambos.
+  - Cadastramento:
+    - Foto com CNH ao lado do rosto.
+    - Comprovante de endereço.
+    - Certidão de antecedentes criminais.
+    - Foto de CNH.
 - Cliente:
   - Nome.
   - E-mail;
@@ -25,6 +31,7 @@
   - Telefone.
   - CPF.
   - Foto do rosto.
+  - Cidade origem.
 - Traçar rota entre motorista, passageiro e destino.
 - Histórico de corridas por passageiros e motoristas.
 - Chat de passageiro com motorista da corrida atual.
@@ -38,8 +45,8 @@
 - Valor da corrida:
   - Valor estimado da rota (Tarifas).
   - Débitos pendentes:
-    - Cancelamento da corridas anteriores.
-    - Valor remanescente da corrida anterior.
+    - Cancelamento das corridas anteriores.
+    - Valor remanescente da corrida anterior. (O que faltou pagar)
 - Integrar com maps:
   - Abrir a rota para o destino.
 - RealTime de deslocamento de motoristas.
@@ -51,23 +58,32 @@
   - Outro:
     - Uma Caixa de texto descrevendo o motivo de cancelamento.
 - Motivos de cancelamentos do passageiro:
-  - Ultrapassou o tempo estimado ( Somente válido quando ultrapassar o tempo estimado de chega do motorista até o local do passageiro).
+  - Ultrapassou o tempo estimado (Somente válido quando ultrapassar o tempo estimado de chegada do motorista até o local do passageiro).
 
 ## RN
 
+- Quando um cadastramento de motorista for negado, permitir reenviar novamente as fotos necessários para o cadastramento e excluir as fotos antigas do servidor.
 - Corridas só podem ser iniciadas sem débitos anteriores.
-- Motorista pode aceitar corrida em até 5 segundos, caso não aceite, passar para o próximo.
 - Solicitação de corrido para o motorista mais próximo do passageiro.
+- Motorista pode aceitar corrida em até 5 segundos, caso não aceite, passar para o próximo.
 - Cancelamentos feitos a partir de passageiros com a opção `ultrapassou o tempo estimado`, não será acrescidos de débitos.
+- Passageiro informar forma de pagamento para corrida atual:
+  - Dinheiro: Buscar apenas motoristas que aceitam `Dinheiro` e `Ambos`.
+  - Cartão: Buscar apenas motoristas que aceitam `Cartão` e `Ambos`.
+- Passageiro informar qual cidade atual.
 
 # O que Usuário irá fazer?
 
 ### ADMIN
 
-- Autorizar cadastro de motorista.
+- Autorizar cadastro de motorista:
+  - Visualizar dados de cadastramento.
+  - Recusar ou aceitar:
+    - Aceitar: Motorista apto para prosseguir com uso da plataforma.
+    - Recusar: Descrever o motivo.
 - Visualizar histórico das corridas:
-  - Motorista.
-  - Passageiro.
+  - Por motorista.
+  - Por passageiro.
 - Mandar mensagens para os motorista e passageiros.
 - CRUD Tarifas.
 - Visualizar solicitações de quitações de dividas de passageiros.
@@ -87,7 +103,6 @@
 - Cancelar corrida atual.
 - Visualizar mensagens da administração.
 - Ticket para administração.
-- Solicitar alteração dos dados pessoais.
 
 ### Passageiro
 
@@ -100,7 +115,6 @@
 - Conversar com o motorista após confirmação da corrida.
 - Cancelar corrida atual:
   - Visualizar a taxa de cancelamento (Tarifa de deslocamento do motorista).
-  - Caso tenha passado do prazo estimado de chegada do motorista, zero taxa.
 - Ticket para administração.
 - Visualizar histórico de corrida:
   - Motorista:
@@ -109,4 +123,4 @@
   - Valor da corrida.
   - Trajeto.
 - Quitar débitos anteriores:
-  - Solicitar um boleto no valor dos débitos anteriores.
+  - Solicitar um boleto no valor dos débitos anteriores. (Ticket)
